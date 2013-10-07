@@ -12,7 +12,12 @@
         </title>
         <script type="text/javascript">
           function setBoardPosition() {
-            $("#game-board").offset({ top: (($(window).height() - $("#game-board").height())/2), left: (($("#game-area").width() - $("#game-board").width())/2 + 150)});
+            topOff = ($(window).height() - $("#game-board").height())/2;
+            leftOff = ($("#game-area").width() - $("#game-board").width())/2 + 150;
+
+            topOff = topOff > 10 ? topOff : 10;
+            leftOff = leftOff > 160 ? leftOff : 160;
+            $("#game-board").offset({ top: topOff, left: leftOff});
           }
 
           var setGameHeight = function() {
