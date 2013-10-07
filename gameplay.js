@@ -1,3 +1,6 @@
+/*
+  Moves the board around the screen, so it stays centered, unless the window is too small.
+*/
 function setBoardPosition() {
   topOff = ($(window).height() - $("#game-board").height())/2;
   leftOff = ($("#game-area").width() - $("#game-board").width())/2 + 150;
@@ -7,11 +10,17 @@ function setBoardPosition() {
   $("#game-board").offset({ top: topOff, left: leftOff});
 }
 
+/*
+  Sets the game board wrapper's height to the current window size.
+*/
 var setGameHeight = function() {
   $("#game-area").height($(window).height());
   setBoardPosition();
 };
 
+/*
+  Returns a random integer between min and max, inclusive.
+*/
 function getRandomInt (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -21,6 +30,9 @@ var active = false;
 var flaggedCount = 0;
 var totalMines = 0;
 
+/*
+  Checks to see if all of the bombs have been flagged, and if so, marks the game as won.
+*/
 function winCheck() {
   for (var i = 0; i < boardArray.length; i ++) {
     for (var j = 0; j < boardArray[i].length; j++) {
@@ -35,6 +47,9 @@ function winCheck() {
   return true;
 }
 
+/*
+  Outlines the locations of the bombs.
+*/
 function cheat() {
   for (var i = 0; i < boardArray.length; i ++) {
     for (var j = 0; j < boardArray[i].length; j++) {
@@ -45,6 +60,9 @@ function cheat() {
   }
 }
 
+/*
+  Sets each cell's text to its number/bomb. Mostly used when the game is over to show results. 
+*/
 function revealBoard() {
   for (var i = 0; i < boardArray.length; i ++) {
     for (var j = 0; j < boardArray[i].length; j++) {
@@ -60,18 +78,9 @@ function revealBoard() {
   }
 }
 
-function printBoard() {
-  lines = ""
-  for(var i = 0; i < boardArray.length; i++) {
-    lines += "["
-    for(var z = 0; z < boardArray[i].length; z++) {
-      lines = lines + boardArray[i][z] + ",";
-    }
-    lines = lines + "]\n";
-  }
-  console.log(lines);
-}
-
+/*
+  Generates a new gameboard, setting bombs and danger scores for squares. 
+*/
 var makeBoard = function() {
   $("#game-board").html("");
   var rows = $("#game-height").val();
@@ -147,6 +156,9 @@ var makeBoard = function() {
     active = true;
 };
 
+/*
+  Marks a square as flagged, making it undiggable.
+*/
 function flagSquare(e, row, col) {
   var clickedSquare = $("#game-sq-"+ row + "-" + col);
   if (clickedSquare.hasClass('revealed')){
@@ -166,6 +178,10 @@ function flagSquare(e, row, col) {
   }
 }
 
+/*
+  Opens up a square, ending the game if it's a bomb, or revealing it if it's empty.
+  If the square has 0 danger, it will reveal out until it hits dangerous squares.
+*/
 function digSquare(e, row, col) {
   var key = boardArray[row][col];
   var clickedSquare = $("#game-sq-"+ row + "-" + col);
