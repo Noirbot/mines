@@ -51,11 +51,7 @@
             for (var i = 0; i < boardArray.length; i ++) {
               for (var j = 0; j < boardArray[i].length; j++) {
                 if (boardArray[i][j] == -1) {
-                  $("#game-sq-"+ i + "-" + j).css({
-                    'border': '2px solid red',
-                    'height': '16px',
-                    'width': '16px',
-                  });
+                  $("#game-sq-"+ i + "-" + j).addClass('cheat');
                 }
               }
             }

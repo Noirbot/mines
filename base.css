@@ -14,7 +14,7 @@ body {
 	margin-top: 0px;
 	left:150px;
 	width:150px;
-	background:#2C4AA3;
+	background:rgba(5,187,195, 1);
 	position:fixed;
 	height:100%;
 	overflow-y:auto;
@@ -70,21 +70,20 @@ body {
 	display: block;
 	height: 20px;
 	width:  20px;
-	background-color: #2C4AA3;
+	margin: 2px;
+	background-color:rgba(5,187,195, 1);
 	text-align: center;
-	vertical-align: top;
 }
 
 #game-board tr td a:hover{
 	color:#fff;
-	border: 2px dashed red;
-	height: 16px;
-	width: 16px;
-	text-decoration:none
+	border: 2px dashed rgba(192, 3, 83, 1);
+	text-decoration:none;
+	margin: 0px;
 }
 
 #game-board.lost tr td a, #game-board.lost tr td a.revealed{
-	background-color: red;
+	background-color: rgba(243,77,81,1);
 	color: black;
 }
 
@@ -93,15 +92,20 @@ body {
 }
 
 #game-board tr td a.revealed {
-	background-color: rgba(131,149,194, 1);
-	color:  orange;
+	background-color: rgba(130,209,215, 1);
+	color:  rgba(243,77,81,1);
 }
 
 #game-board tr td a.flagged {
 	background-color: black;
-	color:  red;
+	color: rgba(192, 3, 83, 1);
 }
 
 #game-board tr td a.flagged:hover {
 	background-color: black;
+}
+
+#game-board tr td a.cheat{
+	border: 2px solid rgba(192, 3, 83, 1);
+	margin: 0px;
 }
