@@ -88,7 +88,7 @@ body {
 }
 
 #game-board.won tr td a, #game-board.won tr td a.revealed{
-	background-color: green;
+	background-color: rgba(140,193,82,1);
 }
 
 #game-board tr td a.revealed {
@@ -107,5 +107,10 @@ body {
 
 #game-board tr td a.cheat{
 	border: 2px solid rgba(192, 3, 83, 1);
+	margin: 0px;
+}
+
+#game-board tr td a.cheat:hover{
+	border: 2px dashed rgba(192, 3, 83, 1);
 	margin: 0px;
 }
