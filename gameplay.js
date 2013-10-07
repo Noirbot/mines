@@ -30,6 +30,7 @@ function winCheck() {
     }
   }
   $("#game-board").addClass('won');
+  revealBoard();
   active = false;
   return true;
 }
@@ -39,6 +40,21 @@ function cheat() {
     for (var j = 0; j < boardArray[i].length; j++) {
       if (boardArray[i][j] == -1) {
         $("#game-sq-"+ i + "-" + j).addClass('cheat');
+      }
+    }
+  }
+}
+
+function revealBoard() {
+  for (var i = 0; i < boardArray.length; i ++) {
+    for (var j = 0; j < boardArray[i].length; j++) {
+      var code = boardArray[i][j];
+      if (code == -1) {
+        $("#game-sq-"+ i + "-" + j).html("B")
+      } else if (code == 0){
+        $("#game-sq-"+ i + "-" + j).html("");
+      } else {
+        $("#game-sq-"+ i + "-" + j).html(code);
       }
     }
   }
@@ -162,6 +178,7 @@ function digSquare(e, row, col) {
     clickedSquare.addClass('revealed');
     clickedSquare.html("B");
     $("#game-board").addClass('lost');
+    revealBoard();
     active = false;
   } else if (key == 0) {
     var revList = [];
