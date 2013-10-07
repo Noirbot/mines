@@ -86,6 +86,8 @@ var makeBoard = function() {
   var rows = $("#game-height").val();
   var cols = $("#game-width").val();
   var mines = $("#game-mines").val();
+
+  // Create the DOM elements to represent the board, linking the click actions to them.
   for( var i = 0; i < rows; i++) {
     $('#game-board').append('<tr></tr>');
     for(var j = 0; j < cols; j++) {
@@ -101,6 +103,7 @@ var makeBoard = function() {
       }
     }
 
+    // Generate the record for the game board.
     for (i = 0; i < rows; i++) {
       boardArray[i] = [];
       for(j = 0; j < cols; j++) {
@@ -108,6 +111,7 @@ var makeBoard = function() {
       }
     }
 
+    // Places the mines, setting the danger scores for surrounding squares.
     for (i = 0; i < mines; i++)
     {
       placed = false;
@@ -148,6 +152,8 @@ var makeBoard = function() {
         }
       }
     }
+
+    // Final Bookkeeping.
     setBoardPosition();
     $("#game-board").removeClass('lost');
     $("#game-board").removeClass('won');
@@ -190,7 +196,7 @@ function digSquare(e, row, col) {
     return;
   }
 
-  if (key == -1) {
+  if (key == -1) { 
     clickedSquare.addClass('revealed');
     clickedSquare.html("B");
     $("#game-board").addClass('lost');
