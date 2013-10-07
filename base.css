@@ -93,7 +93,7 @@ body {
 
 #game-board tr td a.revealed {
 	background-color: rgba(130,209,215, 1);
-	color:  rgba(243,77,81,1);
+	color: black;
 }
 
 #game-board tr td a.flagged {
